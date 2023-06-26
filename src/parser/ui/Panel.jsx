@@ -2,7 +2,7 @@ import { Panel as InterfacePanel, ErrorBoundary } from 'interface';
 import STATISTIC_CATEGORY from 'parser/ui/STATISTIC_CATEGORY';
 import PropTypes from 'prop-types';
 
-const Panel = ({ category = STATISTIC_CATEGORY.PANELS, position, ...others }) => (
+const Panel = ({ ...others }) => (
   <ErrorBoundary>
     <InterfacePanel {...others} />
   </ErrorBoundary>

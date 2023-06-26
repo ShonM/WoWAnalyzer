@@ -1,7 +1,7 @@
 import STATISTIC_CATEGORY from 'parser/ui/STATISTIC_CATEGORY';
 import PropTypes from 'prop-types';
 
-const StatisticGroup = ({ children, large, wide, style, ...others }) => (
+const StatisticGroup = ({ children, wide, style, ...others }) => (
   <div
     className={wide ? 'col-md-6 col-sm-12 col-xs-12' : 'col-lg-3 col-md-4 col-sm-6 col-xs-12'}
     style={{ padding: 0, ...style }}
