@@ -17,14 +17,17 @@ i18n.loadLocaleData('pt', { plurals: pt });
 i18n.loadLocaleData('ru', { plurals: ru });
 i18n.loadLocaleData('zh', { plurals: zh });
 
-const loadCatalog = (locale: string): Promise<{ messages: Messages }> =>
-  process.env.NODE_ENV !== 'production'
-    ? import(
-        /* webpackMode: "lazy", webpackChunkName: "i18n-[request]" */ `@lingui/loader!./${locale}/messages.json?as-js`
-      )
-    : import(
-        /* webpackMode: "lazy", webpackChunkName: "i18n-[request]" */ `./${locale}/messages.js`
-      );
+// const loadCatalog = (locale: string): Promise<{ messages: Messages }> =>
+//   process.env.NODE_ENV !== 'production'
+//     ? import(
+//         /* webpackMode: "lazy", webpackChunkName: "i18n-[request]" */ `@lingui/loader!./${locale}/messages.json?as-js`
+//       )
+//     : import(
+//         /* webpackMode: "lazy", webpackChunkName: "i18n-[request]" */ `./${locale}/messages.js`
+//       );
+
+const loadCatalog = async (locale: string): Promise<{ messages: Messages }> =>
+  await import(`./locales/${locale}.po`);
 
 interface Props {
   children: ReactNode;

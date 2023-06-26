@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "ES2021"],
-    "target": "ES2021",
+    "lib": ["dom", "dom.iterable", "ESNext"],
+    "types": ["vite/client", "vite-plugin-svgr/client"],
+    "target": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
