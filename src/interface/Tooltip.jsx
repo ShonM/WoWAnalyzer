@@ -5,6 +5,7 @@ import ReactTooltip from '@wowanalyzer/react-tooltip-lite';
 
 import './Tooltip.scss';
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class Tooltip extends Component {
   static propTypes = {
     /**
@@ -54,6 +55,7 @@ export default class Tooltip extends Component {
   }
 }
 
+// eslint-disable-next-line react/prefer-stateless-function
 export class TooltipElement extends Component {
   static propTypes = {
     /**
