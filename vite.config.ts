@@ -6,6 +6,7 @@ import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 import { lingui } from '@lingui/vite-plugin';
 import { manualChunksPlugin } from 'vite-plugin-webpackchunkname';
+import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +21,8 @@ export default defineConfig({
     lingui(),
     manualChunksPlugin(),
     reactVirtualized(),
+    EnvironmentPlugin('all', { prefix: 'REACT_APP_' }),
+    EnvironmentPlugin('all', { prefix: 'NODE_' }),
   ],
   resolve: {
     alias: {

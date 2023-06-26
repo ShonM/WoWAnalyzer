@@ -29,7 +29,7 @@ const AppLayout = () => {
     if (detectInternetExplorer()) {
       dispatch(internetExplorer());
     }
-    if (import.meta.env.REACT_APP_FORCE_PREMIUM !== 'true') {
+    if (process.env.REACT_APP_FORCE_PREMIUM !== 'true') {
       // If Premium is forced (development environments), fetching the user would probably fail too
       dispatch(fetchUser());
     }
