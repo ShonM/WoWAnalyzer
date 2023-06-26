@@ -27,7 +27,7 @@ i18n.loadLocaleData('zh', { plurals: zh });
 //       );
 
 const loadCatalog = async (locale: string): Promise<{ messages: Messages }> =>
-  await import(`./locales/${locale}.po`);
+  await import(`./${locale}/messages.json`);
 
 interface Props {
   children: ReactNode;
