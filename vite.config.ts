@@ -4,10 +4,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
+import { lingui } from '@lingui/vite-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), reactVirtualized()],
+  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), lingui(), reactVirtualized()],
   resolve: {
     alias: {
       analysis: resolve(__dirname, '/src/analysis'),
