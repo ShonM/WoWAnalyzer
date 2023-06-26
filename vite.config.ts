@@ -5,10 +5,18 @@ import react from '@vitejs/plugin-react';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 import { lingui } from '@lingui/vite-plugin';
+import { manualChunksPlugin } from 'vite-plugin-webpackchunkname';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), lingui(), reactVirtualized()],
+  plugins: [
+    react(),
+    viteTsconfigPaths(),
+    svgrPlugin(),
+    lingui(),
+    manualChunksPlugin(),
+    reactVirtualized(),
+  ],
   resolve: {
     alias: {
       analysis: resolve(__dirname, '/src/analysis'),
