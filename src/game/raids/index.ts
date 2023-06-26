@@ -3,14 +3,14 @@ import { Spec } from 'game/SPECS';
 import { Race } from 'parser/core/Combatant';
 import PhaseConfig from 'parser/core/PhaseConfig';
 
-import * as MythicPlusSeasonOne from './mythicplusseasonone';
-import * as MythicPlusSeasonTwo from './mythicplusseasontwo';
-import * as VaultOfTheIncarnates from './vaultoftheincarnates';
-import * as Aberrus from './aberrus';
-import * as GruulsLair from './gruulslair';
-import * as MagtheridonsLair from './magtheridonslair';
-import * as Ulduar from './ulduar';
-import * as TrialOfTheGrandCrusader from './trialofthegrandcrusader';
+import MythicPlusSeasonOne from './mythicplusseasonone';
+import MythicPlusSeasonTwo from './mythicplusseasontwo';
+import VaultOfTheIncarnates from './vaultoftheincarnates';
+import Aberrus from './aberrus';
+import GruulsLair from './gruulslair';
+import MagtheridonsLair from './magtheridonslair';
+import Ulduar from './ulduar';
+import TrialOfTheGrandCrusader from './trialofthegrandcrusader';
 
 interface EncounterConfig {
   vantusRuneBuffId?: number;
