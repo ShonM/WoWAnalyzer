@@ -3,6 +3,15 @@ import { Spec } from 'game/SPECS';
 import { Race } from 'parser/core/Combatant';
 import PhaseConfig from 'parser/core/PhaseConfig';
 
+import * as MythicPlusSeasonOne from './mythicplusseasonone';
+import * as MythicPlusSeasonTwo from './mythicplusseasontwo';
+import * as VaultOfTheIncarnates from './vaultoftheincarnates';
+import * as Aberrus from './aberrus';
+import * as GruulsLair from './gruulslair';
+import * as MagtheridonsLair from './magtheridonslair';
+import * as Ulduar from './ulduar';
+import * as TrialOfTheGrandCrusader from './trialofthegrandcrusader';
+
 interface EncounterConfig {
   vantusRuneBuffId?: number;
   softMitigationChecks?: {
@@ -44,16 +53,16 @@ export interface Dungeon {
 
 const raids = {
   // Dragonflight
-  MythicPlusSeasonOne: require('./mythicplusseasonone').default,
-  MythicPlusSeasonTwo: require('./mythicplusseasontwo').default,
-  VaultOfTheIncarnates: require('./vaultoftheincarnates').default, // tier 29
-  Aberrus: require('./aberrus').default, // tier 30
+  MythicPlusSeasonOne,
+  MythicPlusSeasonTwo,
+  VaultOfTheIncarnates,
+  Aberrus,
   // The Burning Cursage
-  GruulsLair: require('./gruulslair').default, // tier 4
-  MagtheridonsLair: require('./magtheridonslair').default, // tier 4
+  GruulsLair,
+  MagtheridonsLair,
   // Wrath of the Lich King (Classic)
-  Ulduar: require('./ulduar').default, // tier 8
-  TrialOfTheGrandCrusader: require('./trialofthegrandcrusader').default, // tier 9
+  Ulduar,
+  TrialOfTheGrandCrusader,
 };
 export default raids;
 
