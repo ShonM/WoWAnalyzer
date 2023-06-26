@@ -33,7 +33,7 @@ const config: Config = {
       (exports) => exports.default,
     ),
 
-  path: __dirname,
+  path: new URL('', import.meta.url).pathname,
 };
 
 export default config;

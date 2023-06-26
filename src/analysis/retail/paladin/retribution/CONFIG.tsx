@@ -51,7 +51,7 @@ const config: Config = {
     import('./CombatLogParser' /* webpackChunkName: "RetributionPaladin" */).then(
       (exports) => exports.default,
     ),
-  path: __dirname,
+  path: new URL('', import.meta.url).pathname,
 };
 
 export default config;
