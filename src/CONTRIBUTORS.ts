@@ -39,15 +39,7 @@ import SPECS from 'game/SPECS';
 */
 
 function avatar(filename: string): string {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const avatar = require(`interface/images/avatars/${filename}`);
-
-  // this branch makes it work both in tests and in the browser
-  if (typeof avatar === 'string') {
-    return avatar;
-  } else {
-    return avatar.default;
-  }
+  return new URL(`./interface/images/avatars/${filename}`, import.meta.url).href;
 }
 
 // For testing purposes because I am too lazy to work out a solution for testing that does not involve adding regular code
