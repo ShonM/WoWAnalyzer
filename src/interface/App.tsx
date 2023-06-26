@@ -1,5 +1,4 @@
-import lazyLoadComponent from 'common/lazyLoadComponent';
-import retryingPromise from 'common/retryingPromise';
+import { lazy, Suspense } from 'react';
 import HomePage from 'interface/Home';
 import PrivacyPage from 'interface/PrivacyPage';
 import ReportLayout from 'interface/report';
@@ -24,70 +23,22 @@ import {
 
 import AppLayout from './AppLayout';
 
-const CharacterPage = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'CharacterPage' */ 'interface/CharacterPage').then(
-      (exports) => exports.default,
-    ),
-  ),
+const CharacterPage = lazy(
+  () => import(/* webpackChunkName: 'CharacterPage' */ 'interface/CharacterPage'),
 );
-const GuildPage = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'GuildPage' */ 'interface/GuildPage').then(
-      (exports) => exports.default,
-    ),
-  ),
+const GuildPage = lazy(() => import(/* webpackChunkName: 'GuildPage' */ 'interface/GuildPage'));
+const News = lazy(() => import(/* webpackChunkName: 'News' */ 'interface/News'));
+const NewsPage = lazy(() => import(/* webpackChunkName: 'News' */ 'interface/NewsPage'));
+const SpecList = lazy(() => import(/* webpackChunkName: 'SpecList' */ 'interface/SpecList'));
+const Premium = lazy(() => import(/* webpackChunkName: 'PremiumPage' */ 'interface/PremiumPage'));
+const AboutPage = lazy(() => import(/* webpackChunkName: 'AboutPage' */ 'interface/AboutPage'));
+const HelpWanted = lazy(
+  () => import(/* webpackChunkName: 'HelpWantedPage' */ 'interface/HelpWantedPage'),
 );
-const News = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'News' */ 'interface/News').then((exports) => exports.default),
-  ),
+const ContributorPage = lazy(
+  () => import(/* webpackChunkName: 'ContributorPage' */ 'interface/ContributorPage'),
 );
-const NewsPage = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'News' */ 'interface/NewsPage').then((exports) => exports.default),
-  ),
-);
-const SpecList = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'SpecList' */ 'interface/SpecList').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
-const Premium = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'PremiumPage' */ 'interface/PremiumPage').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
-const AboutPage = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'AboutPage' */ 'interface/AboutPage').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
-const HelpWanted = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'HelpWantedPage' */ 'interface/HelpWantedPage').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
-const ContributorPage = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'ContributorPage' */ 'interface/ContributorPage').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
-const Search = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'Search' */ 'interface/Search').then((exports) => exports.default),
-  ),
-);
+const Search = lazy(() => import(/* webpackChunkName: 'Search' */ 'interface/Search'));
 
 const appRoutes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<RouterErrorBoundary />}>
@@ -124,6 +75,12 @@ const appRoutes = createRoutesFromElements(
 const router =
   process.env.NODE_ENV === 'test' ? createMemoryRouter(appRoutes) : createBrowserRouter(appRoutes);
 
-const App = () => <RouterProvider router={router} />;
+const App = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />;
+    </Suspense>
+  );
+};
 
 export default App;

@@ -1,16 +1,10 @@
-import lazyLoadComponent from 'common/lazyLoadComponent';
 import makeContributorUrl from 'common/makeContributorUrl';
-import retryingPromise from 'common/retryingPromise';
 import Modal from 'interface/Modal';
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { Link } from 'react-router-dom';
 
-const ContributorDetails = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'ContributorPage' */ './ContributorDetails').then(
-      (exports) => exports.default,
-    ),
-  ),
+const ContributorDetails = lazy(
+  () => import(/* webpackChunkName: 'ContributorPage' */ './ContributorDetails'),
 );
 
 interface Props {

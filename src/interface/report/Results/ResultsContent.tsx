@@ -7,8 +7,6 @@ import EncounterStats from 'interface/report/Results/EncounterStats';
 import About from 'interface/report/Results/About';
 import ResultsChangelogTab from 'interface/ResultsChangelogTab';
 import ErrorBoundary from 'interface/ErrorBoundary';
-import lazyLoadComponent from 'common/lazyLoadComponent';
-import retryingPromise from 'common/retryingPromise';
 import ResultsLoadingIndicator from 'interface/report/Results/ResultsLoadingIndicator';
 import DIFFICULTIES from 'game/DIFFICULTIES';
 import { useCombatLogParser } from 'interface/report/CombatLogParserContext';
@@ -16,23 +14,10 @@ import { useResults } from 'interface/report/Results/ResultsContext';
 import { useConfig } from 'interface/report/ConfigContext';
 import { useParams } from 'react-router-dom';
 import { usePageView } from 'interface/useGoogleAnalytics';
+import { lazy } from 'react';
 
-const LazyTimelineTab = lazyLoadComponent(
-  () =>
-    retryingPromise(() =>
-      import(/* webpackChunkName: 'TimelineTab' */ './TimelineTab').then(
-        (exports) => exports.default,
-      ),
-    ),
-  0,
-);
-const LazyEventsTab = lazyLoadComponent(() =>
-  retryingPromise(() =>
-    import(/* webpackChunkName: 'EventsTab' */ 'interface/EventsTab').then(
-      (exports) => exports.default,
-    ),
-  ),
-);
+const LazyTimelineTab = lazy(() => import(/* webpackChunkName: 'TimelineTab' */ './TimelineTab'));
+const LazyEventsTab = lazy(() => import(/* webpackChunkName: 'EventsTab' */ 'interface/EventsTab'));
 
 export const OverviewTab = () => {
   const { combatLogParser: parser } = useCombatLogParser();
